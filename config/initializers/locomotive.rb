@@ -14,7 +14,13 @@ Locomotive.configure do |config|
   #   # Ex:
   #   multi_sites.reserved_subdomains = %w(www admin email blog webmail mail support help site sites)
   # end
-  config.multi_sites = false
+  # config.multi_sites = false
+
+  config.multi_sites do |multi_sites|
+    multi_sites.domain = ENV['DEFAULT_DOMAIN']
+
+    multi_sites.reserved_subdomains = %w(www admin mail dominion twisted-treeline summoners-rift help sites)
+  end
 
   # configure how many items we display in sub menu in the "Contents" section.
   # config.ui = {
@@ -43,7 +49,7 @@ Locomotive.configure do |config|
   # Ex:
   # config.mailer_sender = 'support@example.com'
   # # => 'support@heroku.com' (Heroku), 'support@bushi.do' (Bushido), 'support@example.com' (Dev) or 'support@<your_hosting_platform>' (Multi-sites)
-  config.mailer_sender = 'support@example.com'
+  config.mailer_sender = "support@#{ENV['DEFAULT_DOMAIN']}"
 
   # allow apps using the engine to add their own Liquid drops, variables and similar available
   # in Liquid templates, extending the assigns used while rendering.
@@ -58,7 +64,7 @@ Locomotive.configure do |config|
   #
   # Note: we strongly recommend to enable it. See the documentation about the "csrf_param" liquid tag.
   #
-  # config.csrf_protection = true
+  config.csrf_protection = true
 
   # Rack-cache settings, mainly used for the inline resizing image module. Default options:
   # config.rack_cache = {
