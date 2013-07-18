@@ -19,7 +19,7 @@ Locomotive.configure do |config|
   config.multi_sites do |multi_sites|
     multi_sites.domain = ENV['DEFAULT_DOMAIN']
 
-    multi_sites.reserved_subdomains = %w(www admin mail dominion twisted-treeline summoners-rift help sites)
+    multi_sites.reserved_subdomains = %w(www admin mail help sites)
   end
 
   # configure how many items we display in sub menu in the "Contents" section.
